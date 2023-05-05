@@ -16,5 +16,6 @@ module.exports = {
   },
   rules: {
     // 自定义你的规则
+    '@typescript-eslint/explicit-member-accessibility': 0,
   },
 };
