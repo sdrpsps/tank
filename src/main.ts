@@ -1,6 +1,8 @@
 import config from '../config/index';
+import SteelCanvas from './canvas/SteelCanvas';
 import StrawCanvas from './canvas/StrawCanvas';
 import WallCanvas from './canvas/WallCanvas';
+import WaterCanvas from './canvas/WaterCanvas';
 import { promises } from './service/images';
 import './style.scss';
 
@@ -13,6 +15,8 @@ async function bootstrap() {
   await Promise.all(promises);
   StrawCanvas.render();
   WallCanvas.render();
+  WaterCanvas.render();
+  SteelCanvas.render();
 }
 
 bootstrap();
