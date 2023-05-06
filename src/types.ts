@@ -3,5 +3,5 @@ export interface ModelConstructor {
 }
 
 export interface IModel {
-  test: () => void;
+  render: () => void;
 }

@@ -1,7 +1,11 @@
 import config from '../../config';
-import { ModelConstructor } from '../types';
+import location from '../service/location';
+import { IModel, ModelConstructor } from '../types';
 
 export default abstract class CanvasAbstract {
+  // 所有已创建模型的列表
+  protected models: IModel[] = [];
+
   constructor(
     protected app = document.querySelector('#app')!,
     protected el = document.createElement('canvas'),
@@ -18,38 +22,19 @@ export default abstract class CanvasAbstract {
     this.app.insertAdjacentElement('afterbegin', this.el);
   }
 
-  // 画模型
-  protected drawModels(num: number, Model: ModelConstructor) {
-    this.positionCollect(num).forEach((item) => {
+  // 创建模型
+  protected createModels(num: number, Model: ModelConstructor) {
+    location.getCollect(num).forEach((item) => {
       const instance = new Model(this.canvas, item.x, item.y);
-      instance.test();
+      this.models.push(instance);
     });
   }
 
-  // 生成唯一坐标
-  protected positionCollect(num: number) {
-    const collection: { x: number; y: number }[] = [];
-    for (let i = 0; i < num; i++) {
-      while (true) {
-        const position = this.position();
-        const exists = collection.some((c) => c.x === position.x && c.y === position.y);
-        if (!exists) {
-          collection.push(position);
-          break;
-        }
-      }
-    }
-    return collection;
+  // 渲染模型并画上画布
+  protected renderModels() {
+    this.models.forEach((model) => model.render());
   }
 
-  // 计算随机位置
-  protected position() {
-    return {
-      x: Math.floor(Math.random() * (config.canvas.width / config.model.width)) * config.model.width,
-      y: Math.floor(Math.random() * (config.canvas.height / config.model.height)) * config.model.height,
-    };
-  }
-
-  // 抽象渲染方法
+  // 抽象渲染方法，所有子类都可以继承
   abstract render(): void;
 }
