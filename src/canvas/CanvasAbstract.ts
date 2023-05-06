@@ -1,5 +1,5 @@
 import config from '../../config';
-import { images } from '../service/images';
+import { ModelConstructor } from '../types';
 
 export default abstract class CanvasAbstract {
   constructor(
@@ -19,9 +19,10 @@ export default abstract class CanvasAbstract {
   }
 
   // 画模型
-  protected drawModels(num: number) {
+  protected drawModels(num: number, Model: ModelConstructor) {
     this.positionCollect(num).forEach((item) => {
-      this.canvas.drawImage(images.get('straw')!, item.x, item.y, config.model.height, config.model.width);
+      const instance = new Model(this.canvas, item.x, item.y);
+      instance.test();
     });
   }
 
