@@ -1,3 +1,4 @@
+import config from '../../config';
 import { tankDirection } from '../enum/tankDirection';
 import { images } from '../service/images';
 import ModelAbstract from './ModelAbstract';
@@ -7,6 +8,29 @@ export default class extends ModelAbstract {
 
   render(): void {
     this.randomDirection();
+    // super.draw(this.randomDraw());
+    setInterval(() => this.move(), 500);
+  }
+
+  // 坦克移动
+  move() {
+    this.canvas.clearRect(this.x, this.y, config.model.width, config.model.height);
+    switch (this.direction) {
+      case tankDirection.top:
+        this.y -= 2;
+        break;
+      case tankDirection.right:
+        this.x += 2;
+        break;
+      case tankDirection.bottom:
+        this.y += 2;
+        break;
+      case tankDirection.left:
+        this.x -= 2;
+        break;
+      default:
+        break;
+    }
     super.draw(this.randomDraw());
   }
 
