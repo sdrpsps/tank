@@ -1,13 +1,21 @@
-import config from '../../config';
+import { tankDirection } from '../enum/tankDirection';
 import { IModel } from '../types';
 
 export default abstract class ModelAbstract implements IModel {
-  constructor(protected canvas: CanvasRenderingContext2D, protected x: number, protected y: number) {}
+  protected direction: tankDirection = tankDirection.top;
+  abstract name: string;
 
-  protected draw(img: HTMLImageElement) {
-    this.canvas.drawImage(img, this.x, this.y, config.model.width, config.model.height);
+  constructor(protected canvas: CanvasRenderingContext2D, public x: number, public y: number) {
+    this.randomDirection();
+  }
+
+  // 随机生成坦克方向
+  protected randomDirection() {
+    const index = Math.floor(Math.random() * 4);
+    this.direction = Object.values(tankDirection)[index];
   }
 
   // 抽象渲染方法，所有子类都可以继承
   abstract render(): void;
+  abstract image(): HTMLImageElement;
 }

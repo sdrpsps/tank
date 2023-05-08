@@ -33,7 +33,9 @@ export default abstract class CanvasAbstract {
 
   // 渲染模型并画上画布
   protected renderModels() {
-    this.models.forEach((model) => model.render());
+    this.models.forEach((model) => {
+      this.canvas.drawImage(model.image(), model.x, model.y, config.model.width, config.model.height);
+    });
   }
 
   // 抽象渲染方法，所有子类都可以继承

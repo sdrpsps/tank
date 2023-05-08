@@ -4,6 +4,9 @@ export interface ModelConstructor {
 
 export interface IModel {
   render: () => void;
+  image: () => HTMLImageElement;
+  x: number;
+  y: number;
 }
 
 export interface ICanvas {

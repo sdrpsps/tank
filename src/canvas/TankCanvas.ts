@@ -15,7 +15,18 @@ class TankCanvas extends CanvasAbstract implements ICanvas {
 
   render(): void {
     this.createModels();
-    super.renderModels();
+    this.renderModels();
+
+    setInterval(() => this.renderModels(), 50);
+  }
+
+  // 渲染模型并画上画布
+  renderModels() {
+    this.canvas.clearRect(0, 0, config.canvas.width, config.canvas.height);
+    this.models.forEach((model) => {
+      model.render();
+      this.canvas.drawImage(model.image(), model.x, model.y, config.model.width, config.model.height);
+    });
   }
 
   createModels() {
