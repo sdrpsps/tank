@@ -17,7 +17,7 @@ class TankCanvas extends CanvasAbstract implements ICanvas {
     this.createModels();
     this.renderModels();
 
-    setInterval(() => this.renderModels(), 50);
+    setInterval(() => this.renderModels(), config.timeout);
   }
 
   // 渲染模型并画上画布

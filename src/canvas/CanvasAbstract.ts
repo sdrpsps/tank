@@ -4,7 +4,7 @@ import { IModel, ModelConstructor } from '../types';
 
 export default abstract class CanvasAbstract {
   // 所有已创建模型的列表
-  protected models: IModel[] = [];
+  public models: IModel[] = [];
 
   constructor(
     protected app = document.querySelector('#app')!,

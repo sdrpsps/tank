@@ -7,6 +7,8 @@ export interface IModel {
   image: () => HTMLImageElement;
   x: number;
   y: number;
+  height: number;
+  width: number;
 }
 
 export interface ICanvas {

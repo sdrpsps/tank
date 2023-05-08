@@ -1,8 +1,9 @@
 import config from '../../config';
 import { tankDirection } from '../enum/tankDirection';
-import { IModel } from '../types';
 
-export default abstract class ModelAbstract implements IModel {
+export default abstract class ModelAbstract {
+  public width: number = config.model.width;
+  public height: number = config.model.height;
   protected direction: tankDirection = tankDirection.top;
   abstract name: string;
 

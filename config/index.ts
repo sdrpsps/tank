@@ -49,4 +49,5 @@ export default {
     tankBottom,
     tankLeft,
   },
+  timeout: 20,
 };
