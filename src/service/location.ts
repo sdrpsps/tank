@@ -27,7 +27,7 @@ class Location {
     return {
       x: Math.floor(Math.random() * (config.canvas.width / config.model.width)) * config.model.width,
       y:
-        Math.floor(Math.random() * (config.canvas.height / config.model.height - 3)) * config.model.height +
+        Math.floor(Math.random() * (config.canvas.height / config.model.height - 5)) * config.model.height +
         config.model.height * 2,
     };
   }

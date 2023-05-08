@@ -1,6 +1,7 @@
 import config from '../config/index';
 import SteelCanvas from './canvas/SteelCanvas';
 import StrawCanvas from './canvas/StrawCanvas';
+import TankCanvas from './canvas/TankCanvas';
 import WallCanvas from './canvas/WallCanvas';
 import WaterCanvas from './canvas/WaterCanvas';
 import { promises } from './service/images';
@@ -17,6 +18,7 @@ async function bootstrap() {
   WallCanvas.render();
   WaterCanvas.render();
   SteelCanvas.render();
+  TankCanvas.render();
 }
 
 bootstrap();
