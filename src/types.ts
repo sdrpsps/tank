@@ -4,4 +4,6 @@ export interface ModelConstructor {
 
 export interface IModel {
   render: () => void;
+  num: () => number;
+  model: () => ModelConstructor;
 }

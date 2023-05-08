@@ -1,7 +1,6 @@
 import config from '../../config';
-import { IModel } from '../types';
 
-export default abstract class ModelAbstract implements IModel {
+export default abstract class ModelAbstract {
   constructor(protected canvas: CanvasRenderingContext2D, protected x: number, protected y: number) {}
 
   protected draw(img: HTMLImageElement) {

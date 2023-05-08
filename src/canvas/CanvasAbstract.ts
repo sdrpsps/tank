@@ -23,8 +23,9 @@ export default abstract class CanvasAbstract {
   }
 
   // 创建模型
-  protected createModels(num: number, Model: ModelConstructor) {
-    location.getCollect(num).forEach((item) => {
+  protected createModels() {
+    location.getCollect(this.num()).forEach((item) => {
+      const Model = this.model();
       const instance = new Model(this.canvas, item.x, item.y);
       this.models.push(instance);
     });
@@ -37,4 +38,6 @@ export default abstract class CanvasAbstract {
 
   // 抽象渲染方法，所有子类都可以继承
   abstract render(): void;
+  abstract num(): number;
+  abstract model(): ModelConstructor;
 }
