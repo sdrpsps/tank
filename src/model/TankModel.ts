@@ -27,6 +27,7 @@ export default class extends ModelAbstract {
       default:
         break;
     }
+    super.draw();
   }
 
   // 生成随机坦克模型

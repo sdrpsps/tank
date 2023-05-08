@@ -7,6 +7,6 @@ export default class extends ModelAbstract {
     return images.get('straw')!;
   }
   render(): void {
-    // super.draw();
+    super.draw();
   }
 }

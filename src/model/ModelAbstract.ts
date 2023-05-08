@@ -1,3 +1,4 @@
+import config from '../../config';
 import { tankDirection } from '../enum/tankDirection';
 import { IModel } from '../types';
 
@@ -7,6 +8,10 @@ export default abstract class ModelAbstract implements IModel {
 
   constructor(protected canvas: CanvasRenderingContext2D, public x: number, public y: number) {
     this.randomDirection();
+  }
+
+  protected draw() {
+    this.canvas.drawImage(this.image(), this.x, this.y, config.model.width, config.model.height);
   }
 
   // 随机生成坦克方向
