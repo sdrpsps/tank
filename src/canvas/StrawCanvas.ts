@@ -1,9 +1,9 @@
 import config from '../../config';
 import CanvasAbstract from './CanvasAbstract';
 import StrawModel from '../model/StrawModel';
-import { ModelConstructor } from '../types';
+import { ICanvas, ModelConstructor } from '../types';
 
-class StrawCanvas extends CanvasAbstract {
+class StrawCanvas extends CanvasAbstract implements ICanvas {
   num(): number {
     return config.straw.num;
   }

@@ -1,9 +1,9 @@
 import config from '../../config';
 import CanvasAbstract from './CanvasAbstract';
 import SteelModel from '../model/SteelModel';
-import { ModelConstructor } from '../types';
+import { ICanvas, ModelConstructor } from '../types';
 
-class SteelCanvas extends CanvasAbstract {
+class SteelCanvas extends CanvasAbstract implements ICanvas {
   num(): number {
     return config.steel.num;
   }

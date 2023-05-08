@@ -1,9 +1,9 @@
 import config from '../../config';
 import CanvasAbstract from './CanvasAbstract';
 import WaterModel from '../model/WaterModel';
-import { ModelConstructor } from '../types';
+import { ICanvas, ModelConstructor } from '../types';
 
-class WaterCanvas extends CanvasAbstract {
+class WaterCanvas extends CanvasAbstract implements ICanvas {
   num(): number {
     return config.water.num;
   }

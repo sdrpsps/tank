@@ -4,6 +4,9 @@ export interface ModelConstructor {
 
 export interface IModel {
   render: () => void;
+}
+
+export interface ICanvas {
   num: () => number;
   model: () => ModelConstructor;
 }
