@@ -3,7 +3,7 @@ import CanvasAbstract from './CanvasAbstract';
 import WaterModel from '../model/WaterModel';
 import { ICanvas, ModelConstructor } from '../types';
 
-class WaterCanvas extends CanvasAbstract implements ICanvas {
+export default new (class WaterCanvas extends CanvasAbstract implements ICanvas {
   num(): number {
     return config.water.num;
   }
@@ -16,6 +16,4 @@ class WaterCanvas extends CanvasAbstract implements ICanvas {
     super.createModels();
     super.renderModels();
   }
-}
-
-export default new WaterCanvas();
+})('water');

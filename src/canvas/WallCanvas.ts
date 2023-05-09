@@ -3,7 +3,7 @@ import CanvasAbstract from './CanvasAbstract';
 import WallModel from '../model/WallModel';
 import { ICanvas, ModelConstructor } from '../types';
 
-class WallCanvas extends CanvasAbstract implements ICanvas {
+export default new (class WallCanvas extends CanvasAbstract implements ICanvas {
   num(): number {
     return config.wall.num;
   }
@@ -16,6 +16,4 @@ class WallCanvas extends CanvasAbstract implements ICanvas {
     super.createModels();
     super.renderModels();
   }
-}
-
-export default new WallCanvas();
+})('wall');

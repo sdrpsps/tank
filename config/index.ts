@@ -6,6 +6,7 @@ import tankTop from '../src/static/images/tank/top.gif';
 import tankRight from '../src/static/images/tank/right.gif';
 import tankBottom from '../src/static/images/tank/bottom.gif';
 import tankLeft from '../src/static/images/tank/left.gif';
+import bullet from '../src/static/images/bullet/bullet.jpg';
 
 export default {
   // 画布尺寸
@@ -48,6 +49,7 @@ export default {
     tankRight,
     tankBottom,
     tankLeft,
+    bullet,
   },
   timeout: 20,
 };

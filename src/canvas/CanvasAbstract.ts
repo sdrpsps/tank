@@ -7,6 +7,7 @@ export default abstract class CanvasAbstract {
   public models: IModel[] = [];
 
   constructor(
+    protected name: string,
     protected app = document.querySelector('#app')!,
     protected el = document.createElement('canvas'),
     public ctx = el.getContext('2d')!,
@@ -18,8 +19,8 @@ export default abstract class CanvasAbstract {
   protected createCanvas() {
     this.el.width = config.canvas.width;
     this.el.height = config.canvas.height;
-
-    this.app.insertAdjacentElement('afterbegin', this.el);
+    this.el.setAttribute('id', this.name);
+    this.app.appendChild(this.el);
   }
 
   // 创建模型

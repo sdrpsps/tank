@@ -4,7 +4,7 @@ import TankModel from '../model/TankModel';
 import { ICanvas, ModelConstructor } from '../types';
 import location from '../service/location';
 
-class TankCanvas extends CanvasAbstract implements ICanvas {
+export default new (class TankCanvas extends CanvasAbstract implements ICanvas {
   num(): number {
     return config.tank.num;
   }
@@ -37,6 +37,4 @@ class TankCanvas extends CanvasAbstract implements ICanvas {
       this.models.push(instance);
     }
   }
-}
-
-export default new TankCanvas();
+})('tank');
