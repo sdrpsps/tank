@@ -1,5 +1,5 @@
 export interface ModelConstructor {
-  new (canvas: CanvasRenderingContext2D, x: number, y: number): IModel;
+  new (x: number, y: number): IModel;
 }
 
 export interface IModel {
@@ -14,4 +14,5 @@ export interface IModel {
 export interface ICanvas {
   num: () => number;
   model: () => ModelConstructor;
+  ctx: CanvasRenderingContext2D;
 }

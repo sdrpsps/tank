@@ -22,10 +22,10 @@ class TankCanvas extends CanvasAbstract implements ICanvas {
 
   // 渲染模型并画上画布
   renderModels() {
-    this.canvas.clearRect(0, 0, config.canvas.width, config.canvas.height);
+    this.ctx.clearRect(0, 0, config.canvas.width, config.canvas.height);
     this.models.forEach((model) => {
       model.render();
-      this.canvas.drawImage(model.image(), model.x, model.y, config.model.width, config.model.height);
+      this.ctx.drawImage(model.image(), model.x, model.y, config.model.width, config.model.height);
     });
   }
 
@@ -33,7 +33,7 @@ class TankCanvas extends CanvasAbstract implements ICanvas {
     for (let i = 0; i < this.num(); i++) {
       const pos = location.position();
       const Model = this.model();
-      const instance = new Model(this.canvas, pos.x, 0);
+      const instance = new Model(pos.x, 0);
       this.models.push(instance);
     }
   }

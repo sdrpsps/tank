@@ -20,7 +20,7 @@ export default {
   },
   // 草坪配置
   straw: {
-    num: 50,
+    num: 120,
   },
   // 砖墙配置
   wall: {

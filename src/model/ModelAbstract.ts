@@ -1,18 +1,20 @@
 import config from '../../config';
 import { tankDirection } from '../enum/tankDirection';
+import { ICanvas } from '../types';
 
 export default abstract class ModelAbstract {
   public width: number = config.model.width;
   public height: number = config.model.height;
   protected direction: tankDirection = tankDirection.top;
-  abstract name: string;
+  public abstract canvas: ICanvas;
+  protected abstract name: string;
 
-  constructor(protected canvas: CanvasRenderingContext2D, public x: number, public y: number) {
+  constructor(public x: number, public y: number) {
     this.randomDirection();
   }
 
   protected draw() {
-    this.canvas.drawImage(this.image(), this.x, this.y, config.model.width, config.model.height);
+    this.canvas.ctx.drawImage(this.image(), this.x, this.y, config.model.width, config.model.height);
   }
 
   // 随机生成坦克方向
@@ -22,6 +24,6 @@ export default abstract class ModelAbstract {
   }
 
   // 抽象渲染方法，所有子类都可以继承
-  abstract render(): void;
-  abstract image(): HTMLImageElement;
+  protected abstract render(): void;
+  protected abstract image(): HTMLImageElement;
 }

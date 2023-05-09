@@ -1,17 +1,22 @@
+import { random } from 'lodash';
 import config from '../../config';
 import SteelCanvas from '../canvas/SteelCanvas';
 import WallCanvas from '../canvas/WallCanvas';
 import WaterCanvas from '../canvas/WaterCanvas';
 import { tankDirection } from '../enum/tankDirection';
 import { images } from '../service/images';
-import { IModel } from '../types';
+import { ICanvas, IModel } from '../types';
 import ModelAbstract from './ModelAbstract';
+import TankCanvas from '../canvas/TankCanvas';
 
 export default class extends ModelAbstract implements IModel {
+  canvas: ICanvas = TankCanvas;
+
   name = 'tank';
 
   render(): void {
     this.move();
+    if (random(20) === 1) this.direction = tankDirection.bottom;
   }
 
   // 坦克移动
