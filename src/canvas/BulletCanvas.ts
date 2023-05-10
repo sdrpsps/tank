@@ -26,7 +26,6 @@ export default new (class BulletCanvas extends CanvasAbstract implements ICanvas
       if (!isExist) {
         this.models.push(new BulletModel(tank));
       }
-      console.log(this.models);
     });
   }
 })('bullet');

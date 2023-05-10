@@ -8,6 +8,7 @@ import { images } from '../service/images';
 import { ICanvas, IModel } from '../types';
 import ModelAbstract from './ModelAbstract';
 import TankCanvas from '../canvas/TankCanvas';
+import utils from '../utils';
 
 export default class extends ModelAbstract implements IModel {
   canvas: ICanvas = TankCanvas;
@@ -40,7 +41,7 @@ export default class extends ModelAbstract implements IModel {
         default:
           break;
       }
-      if (this.isTouch(x, y)) {
+      if (utils.isModelTouch(x, y)) {
         this.randomDirection();
       } else {
         this.x = x;
@@ -49,23 +50,6 @@ export default class extends ModelAbstract implements IModel {
       }
     }
     super.draw();
-  }
-
-  // 碰撞检测
-  isTouch(x: number, y: number) {
-    if (x < 0 || x + this.width > config.canvas.width || y < 0 || y + this.height > config.canvas.height) {
-      return true;
-    }
-    const models = [...WaterCanvas.models, ...WallCanvas.models, ...SteelCanvas.models];
-
-    return models.some((model) => {
-      const state =
-        x + this.width <= model.x ||
-        x >= model.x + model.width ||
-        y + this.height <= model.y ||
-        y >= model.y + model.height;
-      return !state;
-    });
   }
 
   // 生成随机坦克模型

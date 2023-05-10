@@ -3,6 +3,7 @@ import BulletCanvas from '../canvas/BulletCanvas';
 import { tankDirection } from '../enum/tankDirection';
 import { images } from '../service/images';
 import { ICanvas, IModel } from '../types';
+import utils from '../utils';
 import ModelAbstract from './ModelAbstract';
 
 export default class extends ModelAbstract implements IModel {
@@ -36,9 +37,13 @@ export default class extends ModelAbstract implements IModel {
         x--;
         break;
     }
-    this.x = x;
-    this.y = y;
-    this.draw();
+    if (utils.isCanvasTouch(x, y, 2, 2)) {
+      console.log('touch');
+    } else {
+      this.x = x;
+      this.y = y;
+      this.draw();
+    }
   }
 
   protected draw() {
