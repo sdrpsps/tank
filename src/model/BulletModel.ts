@@ -43,7 +43,8 @@ export default class extends ModelAbstract implements IModel {
       this.destroy();
     } else if (touchModel) {
       this.destroy();
-      touchModel.destroy();
+      if (touchModel.name !== 'steel') touchModel.destroy();
+      this.blast(touchModel);
     } else {
       this.x = x;
       this.y = y;

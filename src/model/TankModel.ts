@@ -41,7 +41,14 @@ export default class extends ModelAbstract implements IModel {
         default:
           break;
       }
-      if (utils.isModelTouch(x, y) || utils.isCanvasTouch(x, y)) {
+      if (
+        utils.isModelTouch(x, y, this.width, this.height, [
+          ...WallCanvas.models,
+          ...SteelCanvas.models,
+          ...WaterCanvas.models,
+        ]) ||
+        utils.isCanvasTouch(x, y)
+      ) {
         this.randomDirection();
       } else {
         this.x = x;

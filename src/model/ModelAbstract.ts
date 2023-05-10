@@ -1,13 +1,13 @@
 import config from '../../config';
 import { tankDirection } from '../enum/tankDirection';
-import { ICanvas } from '../types';
+import { ICanvas, IModel } from '../types';
 
 export default abstract class ModelAbstract {
   public width: number = config.model.width;
   public height: number = config.model.height;
   public direction: tankDirection = tankDirection.top;
   public abstract canvas: ICanvas;
-  protected abstract name: string;
+  abstract name: string;
 
   constructor(public x: number, public y: number) {
     this.randomDirection();
@@ -26,6 +26,22 @@ export default abstract class ModelAbstract {
   protected randomDirection() {
     const index = Math.floor(Math.random() * 4);
     this.direction = Object.values(tankDirection)[index];
+  }
+
+  // 爆炸效果方法
+  protected blast(model: IModel) {
+    Array(...Array(8).keys()).reduce((promise, index) => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          const img = new Image();
+          img.src = `/src/static/images/blasts/blast${index}.gif`;
+          img.onload = () => {
+            this.canvas.ctx.drawImage(img, model.x, model.y, model.width, model.height);
+            resolve(promise);
+          };
+        }, 100);
+      });
+    }, Promise.resolve());
   }
 
   // 抽象渲染方法，所有子类都可以继承

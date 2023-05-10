@@ -16,6 +16,7 @@ export interface IModel {
   width: number;
   tank?: IModel;
   direction: string;
+  name: string;
 }
 
 export interface ICanvas {

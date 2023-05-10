@@ -1,4 +1,5 @@
 import config from '../config';
+import SteelCanvas from './canvas/SteelCanvas';
 import WallCanvas from './canvas/WallCanvas';
 
 export default {
@@ -13,7 +14,7 @@ export default {
     y: number,
     width: number = config.model.width,
     height: number = config.model.height,
-    models = [...WallCanvas.models],
+    models = [...WallCanvas.models, ...SteelCanvas.models],
   ) {
     return models.find((model) => {
       const state =
