@@ -1,5 +1,8 @@
 import config from '../../config';
+import BossCanvas from '../canvas/BossCanvas';
 import BulletCanvas from '../canvas/BulletCanvas';
+import SteelCanvas from '../canvas/SteelCanvas';
+import WallCanvas from '../canvas/WallCanvas';
 import { tankDirection } from '../enum/tankDirection';
 import { images } from '../service/images';
 import { ICanvas, IModel } from '../types';
@@ -38,7 +41,11 @@ export default class extends ModelAbstract implements IModel {
         break;
     }
     // 碰撞检测
-    const touchModel = utils.isModelTouch(x, y, 2, 2);
+    const touchModel = utils.isModelTouch(x, y, 2, 2, [
+      ...WallCanvas.models,
+      ...SteelCanvas.models,
+      ...BossCanvas.models,
+    ]);
     if (utils.isCanvasTouch(x, y, 2, 2)) {
       this.destroy();
     } else if (touchModel) {

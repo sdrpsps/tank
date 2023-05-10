@@ -1,14 +1,14 @@
 import { random } from 'lodash';
-import config from '../../config';
 import SteelCanvas from '../canvas/SteelCanvas';
+import TankCanvas from '../canvas/TankCanvas';
 import WallCanvas from '../canvas/WallCanvas';
 import WaterCanvas from '../canvas/WaterCanvas';
 import { tankDirection } from '../enum/tankDirection';
 import { images } from '../service/images';
 import { ICanvas, IModel } from '../types';
-import ModelAbstract from './ModelAbstract';
-import TankCanvas from '../canvas/TankCanvas';
 import utils from '../utils';
+import ModelAbstract from './ModelAbstract';
+import BossCanvas from '../canvas/BossCanvas';
 
 export default class extends ModelAbstract implements IModel {
   canvas: ICanvas = TankCanvas;
@@ -46,6 +46,7 @@ export default class extends ModelAbstract implements IModel {
           ...WallCanvas.models,
           ...SteelCanvas.models,
           ...WaterCanvas.models,
+          ...BossCanvas.models,
         ]) ||
         utils.isCanvasTouch(x, y)
       ) {
