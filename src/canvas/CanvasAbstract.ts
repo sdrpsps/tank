@@ -1,6 +1,6 @@
 import config from '../../config';
 import location from '../service/location';
-import { IModel, ModelConstructor } from '../types';
+import { BulletModelConstructor, IModel, ModelConstructor } from '../types';
 
 export default abstract class CanvasAbstract {
   // 所有已创建模型的列表
@@ -26,7 +26,7 @@ export default abstract class CanvasAbstract {
   // 创建模型
   protected createModels() {
     location.getCollect(this.num()).forEach((item) => {
-      const Model = this.model();
+      const Model = this.model() as ModelConstructor;
       const instance = new Model(item.x, item.y);
       this.models.push(instance);
     });
@@ -34,13 +34,12 @@ export default abstract class CanvasAbstract {
 
   // 渲染模型并画上画布
   protected renderModels() {
-    this.models.forEach((model) => {
-      model.render();
-    });
+    this.ctx.clearRect(0, 0, config.canvas.width, config.canvas.height);
+    this.models.forEach((model) => model.render());
   }
 
   // 抽象渲染方法，所有子类都可以继承
   abstract render(): void;
   abstract num(): number;
-  abstract model(): ModelConstructor;
+  abstract model(): ModelConstructor | BulletModelConstructor;
 }

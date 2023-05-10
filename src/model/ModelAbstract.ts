@@ -5,7 +5,7 @@ import { ICanvas } from '../types';
 export default abstract class ModelAbstract {
   public width: number = config.model.width;
   public height: number = config.model.height;
-  protected direction: tankDirection = tankDirection.top;
+  public direction: tankDirection = tankDirection.top;
   public abstract canvas: ICanvas;
   protected abstract name: string;
 

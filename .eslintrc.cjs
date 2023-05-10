@@ -18,6 +18,6 @@ module.exports = {
     // 自定义你的规则
     '@typescript-eslint/explicit-member-accessibility': 0,
     '@typescript-eslint/prefer-function-type': 0,
-    'max-params': ['error', 4],
+    'max-params': 0,
   },
 };
