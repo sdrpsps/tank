@@ -9,6 +9,7 @@ export interface BulletModelConstructor {
 export interface IModel {
   render: () => void;
   image: () => HTMLImageElement;
+  destroy: () => void;
   x: number;
   y: number;
   height: number;
@@ -20,5 +21,7 @@ export interface IModel {
 export interface ICanvas {
   num: () => number;
   model: () => ModelConstructor | BulletModelConstructor;
+  renderModels: () => void;
+  removeModel: (model: IModel) => void;
   ctx: CanvasRenderingContext2D;
 }

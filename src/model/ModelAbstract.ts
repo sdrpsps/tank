@@ -13,6 +13,11 @@ export default abstract class ModelAbstract {
     this.randomDirection();
   }
 
+  public destroy() {
+    this.canvas.removeModel(this);
+    this.canvas.renderModels();
+  }
+
   protected draw() {
     this.canvas.ctx.drawImage(this.image(), this.x, this.y, config.model.width, config.model.height);
   }
@@ -24,6 +29,6 @@ export default abstract class ModelAbstract {
   }
 
   // 抽象渲染方法，所有子类都可以继承
-  protected abstract render(): void;
-  protected abstract image(): HTMLImageElement;
+  abstract render(): void;
+  abstract image(): HTMLImageElement;
 }

@@ -25,7 +25,7 @@ export default {
   },
   // 砖墙配置
   wall: {
-    num: 50,
+    num: 160,
   },
   // 水配置
   water: {

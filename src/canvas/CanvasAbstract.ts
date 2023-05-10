@@ -14,6 +14,15 @@ export default abstract class CanvasAbstract {
   ) {
     this.createCanvas();
   }
+  // 渲染模型并画上画布
+  public renderModels() {
+    this.ctx.clearRect(0, 0, config.canvas.width, config.canvas.height);
+    this.models.forEach((model) => model.render());
+  }
+
+  public removeModel(model: IModel) {
+    this.models = this.models.filter((m) => m !== model);
+  }
 
   // 创建画布
   protected createCanvas() {
@@ -30,12 +39,6 @@ export default abstract class CanvasAbstract {
       const instance = new Model(item.x, item.y);
       this.models.push(instance);
     });
-  }
-
-  // 渲染模型并画上画布
-  protected renderModels() {
-    this.ctx.clearRect(0, 0, config.canvas.width, config.canvas.height);
-    this.models.forEach((model) => model.render());
   }
 
   // 抽象渲染方法，所有子类都可以继承

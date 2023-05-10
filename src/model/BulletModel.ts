@@ -37,8 +37,13 @@ export default class extends ModelAbstract implements IModel {
         x--;
         break;
     }
+    // 碰撞检测
+    const touchModel = utils.isModelTouch(x, y, 2, 2);
     if (utils.isCanvasTouch(x, y, 2, 2)) {
-      console.log('touch');
+      this.destroy();
+    } else if (touchModel) {
+      this.destroy();
+      touchModel.destroy();
     } else {
       this.x = x;
       this.y = y;
