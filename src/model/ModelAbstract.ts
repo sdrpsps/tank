@@ -34,7 +34,7 @@ export default abstract class ModelAbstract {
       return new Promise((resolve) => {
         setTimeout(() => {
           const img = new Image();
-          img.src = `/src/static/images/blasts/blast${index}.gif`;
+          img.src = config.blastList[index];
           img.onload = () => {
             this.canvas.ctx.drawImage(img, model.x, model.y, model.width, model.height);
             resolve(promise);
