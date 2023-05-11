@@ -19,22 +19,24 @@ app.style.height = config.canvas.height + 'px';
 export default {
   // 是否已开始游戏
   isStart: false,
-  // 是否已开始游戏
-  isEnd: false,
+  // 游戏状态 0正常 1赢 2输
+  state: 0,
   // 定时器
   interval: 0,
 
+  // 初始化
   bootstrap() {
     app.addEventListener('click', async () => {
       await this.start();
       this.interval = setInterval(() => {
-        if (TankCanvas.models.length === 0) this.isEnd = true;
-        if (PlayerCanvas.models.length === 0 || BossCanvas.models.length === 0) this.isEnd = true;
-        if (this.isEnd) this.end();
+        if (TankCanvas.models.length === 0) this.state = 1;
+        if (PlayerCanvas.models.length === 0 || BossCanvas.models.length === 0) this.state = 2;
+        if (this.state !== 0) this.end();
       }, 100);
     });
   },
 
+  // 开始游戏
   async start() {
     if (this.isStart) return;
     this.isStart = true;
@@ -54,10 +56,25 @@ export default {
     PlayerCanvas.render();
   },
 
+  // 结束游戏
   end() {
     clearInterval(this.interval);
     TankCanvas.stop();
     BulletCanvas.stop();
-    console.log('结束');
+    this.createText();
+  },
+
+  // 结束文字
+  createText() {
+    const el = document.createElement('canvas');
+    el.width = config.canvas.width;
+    el.height = config.canvas.height;
+
+    const ctx = el.getContext('2d')!;
+    ctx.fillStyle = '#fff';
+    ctx.font = '80px system-ui';
+    ctx.textAlign = 'center';
+    ctx.fillText(this.state === 1 ? '你真棒' : '菜', config.canvas.width / 2, config.canvas.height / 2);
+    app.appendChild(el);
   },
 };
