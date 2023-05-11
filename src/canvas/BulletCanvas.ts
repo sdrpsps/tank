@@ -6,6 +6,8 @@ import PlayerCanvas from './PlayerCanvas';
 import TankCanvas from './TankCanvas';
 
 export default new (class BulletCanvas extends CanvasAbstract implements ICanvas {
+  interval = 0;
+
   num(): number {
     return 0;
   }
@@ -15,10 +17,14 @@ export default new (class BulletCanvas extends CanvasAbstract implements ICanvas
   }
 
   render(): void {
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.createModels();
       this.renderModels();
     }, config.timeout);
+  }
+
+  stop() {
+    clearInterval(this.interval);
   }
 
   createModels(): void {

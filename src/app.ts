@@ -16,9 +16,22 @@ app.style.width = config.canvas.width + 'px';
 app.style.height = config.canvas.height + 'px';
 
 export default {
+  // 是否已开始游戏
   isStart: false,
+  // 是否已开始游戏
+  isEnd: false,
+  // 定时器
+  interval: 0,
+
   bootstrap() {
-    app.addEventListener('click', () => this.start());
+    app.addEventListener('click', async () => {
+      await this.start();
+      this.interval = setInterval(() => {
+        if (TankCanvas.models.length === 0) this.isEnd = true;
+        if (PlayerCanvas.models.length === 0 || BossCanvas.models.length === 0) this.isEnd = true;
+        if (this.isEnd) this.end();
+      }, 100);
+    });
   },
 
   async start() {
@@ -39,5 +52,10 @@ export default {
     PlayerCanvas.render();
   },
 
-  end() {},
+  end() {
+    clearInterval(this.interval);
+    TankCanvas.stop();
+    BulletCanvas.stop();
+    console.log('结束');
+  },
 };

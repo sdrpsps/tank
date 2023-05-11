@@ -5,6 +5,8 @@ import { ICanvas, ModelConstructor } from '../types';
 import location from '../service/location';
 
 export default new (class TankCanvas extends CanvasAbstract implements ICanvas {
+  interval = 0;
+
   num(): number {
     return config.tank.num;
   }
@@ -17,7 +19,11 @@ export default new (class TankCanvas extends CanvasAbstract implements ICanvas {
     this.createModels();
     this.renderModels();
 
-    setInterval(() => this.renderModels(), config.timeout);
+    this.interval = setInterval(() => this.renderModels(), config.timeout);
+  }
+
+  stop() {
+    clearInterval(this.interval);
   }
 
   // 渲染模型并画上画布

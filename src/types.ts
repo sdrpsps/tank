@@ -24,5 +24,6 @@ export interface ICanvas {
   model: () => ModelConstructor | BulletModelConstructor;
   renderModels: () => void;
   removeModel: (model: IModel) => void;
+  stop?: () => void;
   ctx: CanvasRenderingContext2D;
 }
