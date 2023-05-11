@@ -34,6 +34,7 @@ export default {
         if (this.state !== 0) this.end();
       }, 100);
     });
+    audio.init();
   },
 
   // 开始游戏
