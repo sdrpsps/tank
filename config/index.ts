@@ -36,19 +36,19 @@ export default {
   },
   // 草坪配置
   straw: {
-    num: 120,
+    num: 200,
   },
   // 砖墙配置
   wall: {
-    num: 160,
+    num: 80,
   },
   // 水配置
   water: {
-    num: 50,
+    num: 20,
   },
   // 白墙配置
   steel: {
-    num: 50,
+    num: 10,
   },
   // 敌方坦克
   tank: {

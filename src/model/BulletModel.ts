@@ -1,7 +1,9 @@
 import config from '../../config';
 import BossCanvas from '../canvas/BossCanvas';
 import BulletCanvas from '../canvas/BulletCanvas';
+import PlayerCanvas from '../canvas/PlayerCanvas';
 import SteelCanvas from '../canvas/SteelCanvas';
+import TankCanvas from '../canvas/TankCanvas';
 import WallCanvas from '../canvas/WallCanvas';
 import { directionEnum } from '../enum/directionEnum';
 import { images } from '../service/images';
@@ -45,10 +47,12 @@ export default class extends ModelAbstract implements IModel {
       ...WallCanvas.models,
       ...SteelCanvas.models,
       ...BossCanvas.models,
+      ...TankCanvas.models,
+      ...PlayerCanvas.models,
     ]);
     if (utils.isCanvasTouch(x, y, 2, 2)) {
       this.destroy();
-    } else if (touchModel) {
+    } else if (touchModel && touchModel.name !== this.tank.name) {
       this.destroy();
       if (touchModel.name !== 'steel') touchModel.destroy();
       this.blast(touchModel);
