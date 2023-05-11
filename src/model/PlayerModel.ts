@@ -8,6 +8,7 @@ import { directionEnum } from '../enum/directionEnum';
 import utils from '../utils';
 import WallCanvas from '../canvas/WallCanvas';
 import SteelCanvas from '../canvas/SteelCanvas';
+import BulletCanvas from '../canvas/BulletCanvas';
 
 export default class extends ModelAbstract implements IModel {
   canvas: ICanvas = PlayerCanvas;
@@ -27,6 +28,11 @@ export default class extends ModelAbstract implements IModel {
       this.isEventBind = true;
       document.addEventListener('keydown', (e) => this.changeDirection(e));
       document.addEventListener('keydown', (e) => this.move(e));
+      document.addEventListener('keydown', (e) => {
+        if (e.code === 'Space') {
+          BulletCanvas.createPlayerModels();
+        }
+      });
     }
   }
 

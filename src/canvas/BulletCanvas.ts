@@ -2,6 +2,7 @@ import config from '../../config';
 import BulletModel from '../model/BulletModel';
 import { BulletModelConstructor, ICanvas } from '../types';
 import CanvasAbstract from './CanvasAbstract';
+import PlayerCanvas from './PlayerCanvas';
 import TankCanvas from './TankCanvas';
 
 export default new (class BulletCanvas extends CanvasAbstract implements ICanvas {
@@ -27,5 +28,9 @@ export default new (class BulletCanvas extends CanvasAbstract implements ICanvas
         this.models.push(new BulletModel(tank));
       }
     });
+  }
+
+  createPlayerModels() {
+    this.models.push(new BulletModel(PlayerCanvas.models[0]));
   }
 })('bullet');

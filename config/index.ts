@@ -52,7 +52,7 @@ export default {
   },
   // 敌方坦克
   tank: {
-    num: 20,
+    num: 10,
   },
   // 图片加载地址
   images: {
