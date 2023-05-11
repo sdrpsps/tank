@@ -7,6 +7,7 @@ import StrawCanvas from './canvas/StrawCanvas';
 import TankCanvas from './canvas/TankCanvas';
 import WallCanvas from './canvas/WallCanvas';
 import WaterCanvas from './canvas/WaterCanvas';
+import audio from './service/audio';
 import { promises } from './service/images';
 import './style.scss';
 
@@ -39,6 +40,7 @@ export default {
     this.isStart = true;
 
     app.style.backgroundImage = 'none';
+    audio.start();
 
     await Promise.all(promises);
 

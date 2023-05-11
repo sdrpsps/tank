@@ -1,5 +1,6 @@
 import config from '../../config';
 import BulletModel from '../model/BulletModel';
+import audio from '../service/audio';
 import { BulletModelConstructor, ICanvas } from '../types';
 import CanvasAbstract from './CanvasAbstract';
 import PlayerCanvas from './PlayerCanvas';
@@ -38,5 +39,6 @@ export default new (class BulletCanvas extends CanvasAbstract implements ICanvas
 
   createPlayerModels() {
     this.models.push(new BulletModel(PlayerCanvas.models[0]));
+    audio.fire();
   }
 })('bullet');
