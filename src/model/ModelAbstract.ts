@@ -1,11 +1,11 @@
 import config from '../../config';
-import { tankDirection } from '../enum/tankDirection';
+import { directionEnum } from '../enum/directionEnum';
 import { ICanvas, IModel } from '../types';
 
 export default abstract class ModelAbstract {
   public width: number = config.model.width;
   public height: number = config.model.height;
-  public direction: tankDirection = tankDirection.top;
+  public direction: directionEnum = directionEnum.top;
   public abstract canvas: ICanvas;
   abstract name: string;
 
@@ -25,7 +25,7 @@ export default abstract class ModelAbstract {
   // 随机生成坦克方向
   protected randomDirection() {
     const index = Math.floor(Math.random() * 4);
-    this.direction = Object.values(tankDirection)[index];
+    this.direction = Object.values(directionEnum)[index];
   }
 
   // 爆炸效果方法

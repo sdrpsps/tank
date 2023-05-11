@@ -1,6 +1,7 @@
 import config from '../config/index';
 import BossCanvas from './canvas/BossCanvas';
 import BulletCanvas from './canvas/BulletCanvas';
+import PlayerCanvas from './canvas/PlayerCanvas';
 import SteelCanvas from './canvas/SteelCanvas';
 import StrawCanvas from './canvas/StrawCanvas';
 import TankCanvas from './canvas/TankCanvas';
@@ -23,6 +24,7 @@ async function bootstrap() {
   TankCanvas.render();
   BulletCanvas.render();
   BossCanvas.render();
+  PlayerCanvas.render();
 }
 
 bootstrap();

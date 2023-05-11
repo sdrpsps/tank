@@ -3,7 +3,7 @@ import BossCanvas from '../canvas/BossCanvas';
 import BulletCanvas from '../canvas/BulletCanvas';
 import SteelCanvas from '../canvas/SteelCanvas';
 import WallCanvas from '../canvas/WallCanvas';
-import { tankDirection } from '../enum/tankDirection';
+import { directionEnum } from '../enum/directionEnum';
 import { images } from '../service/images';
 import { ICanvas, IModel } from '../types';
 import utils from '../utils';
@@ -16,7 +16,7 @@ export default class extends ModelAbstract implements IModel {
 
   constructor(public tank: IModel) {
     super(tank.x + config.model.width / 2, tank.y + config.model.height / 2);
-    this.direction = tank.direction as tankDirection;
+    this.direction = tank.direction as directionEnum;
   }
 
   image(): HTMLImageElement {
@@ -27,16 +27,16 @@ export default class extends ModelAbstract implements IModel {
     let x = this.x;
     let y = this.y;
     switch (this.direction) {
-      case tankDirection.top:
+      case directionEnum.top:
         y--;
         break;
-      case tankDirection.right:
+      case directionEnum.right:
         x++;
         break;
-      case tankDirection.bottom:
+      case directionEnum.bottom:
         y++;
         break;
-      case tankDirection.left:
+      case directionEnum.left:
         x--;
         break;
     }

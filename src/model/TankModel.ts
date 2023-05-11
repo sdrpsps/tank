@@ -1,14 +1,15 @@
-import { random } from 'lodash';
+import { random, upperFirst } from 'lodash';
 import SteelCanvas from '../canvas/SteelCanvas';
 import TankCanvas from '../canvas/TankCanvas';
 import WallCanvas from '../canvas/WallCanvas';
 import WaterCanvas from '../canvas/WaterCanvas';
-import { tankDirection } from '../enum/tankDirection';
+import { directionEnum } from '../enum/directionEnum';
 import { images } from '../service/images';
 import { ICanvas, IModel } from '../types';
 import utils from '../utils';
 import ModelAbstract from './ModelAbstract';
 import BossCanvas from '../canvas/BossCanvas';
+import config from '../../config';
 
 export default class extends ModelAbstract implements IModel {
   canvas: ICanvas = TankCanvas;
@@ -17,7 +18,7 @@ export default class extends ModelAbstract implements IModel {
 
   render(): void {
     this.move();
-    if (random(20) === 1) this.direction = tankDirection.bottom;
+    if (random(20) === 1) this.direction = directionEnum.bottom;
   }
 
   // 坦克移动
@@ -26,16 +27,16 @@ export default class extends ModelAbstract implements IModel {
       let x = this.x;
       let y = this.y;
       switch (this.direction) {
-        case tankDirection.top:
+        case directionEnum.top:
           y--;
           break;
-        case tankDirection.right:
+        case directionEnum.right:
           x++;
           break;
-        case tankDirection.bottom:
+        case directionEnum.bottom:
           y++;
           break;
-        case tankDirection.left:
+        case directionEnum.left:
           x--;
           break;
         default:
@@ -62,6 +63,7 @@ export default class extends ModelAbstract implements IModel {
 
   // 生成随机坦克模型
   image() {
-    return images.get(this.direction)!;
+    let direction = this.name + upperFirst(this.direction);
+    return images.get(direction as keyof typeof config.images)!;
   }
 }

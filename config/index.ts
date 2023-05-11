@@ -18,6 +18,11 @@ import blast5 from '../src/assets/images/blasts/blast5.gif';
 import blast6 from '../src/assets/images/blasts/blast6.gif';
 import blast7 from '../src/assets/images/blasts/blast7.gif';
 
+import playerTop from '../src/assets/images/player/top.gif';
+import playerRight from '../src/assets/images/player/right.gif';
+import playerBottom from '../src/assets/images/player/bottom.gif';
+import playerLeft from '../src/assets/images/player/left.gif';
+
 export default {
   // 画布尺寸
   canvas: {
@@ -61,6 +66,10 @@ export default {
     tankLeft,
     bullet,
     boss,
+    playerTop,
+    playerRight,
+    playerBottom,
+    playerLeft,
   },
   blastList: [blast0, blast1, blast2, blast3, blast4, blast5, blast6, blast7],
   timeout: 20,
