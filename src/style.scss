@@ -7,6 +7,10 @@ body {
   align-items: center;
   #app {
     background-color: #333;
+    background-image: url(./assets/images/cover/cover.png);
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
     position: relative;
     canvas {
       position: absolute;
