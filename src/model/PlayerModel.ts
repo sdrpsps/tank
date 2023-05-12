@@ -73,28 +73,28 @@ export default class extends ModelAbstract implements IModel {
     let y = this.y;
     switch (e.code) {
       case 'ArrowUp':
-        y -= 5;
+        y -= config.model.height;
         break;
       case 'ArrowDown':
-        y += 5;
+        y += config.model.height;
         break;
       case 'ArrowLeft':
-        x -= 5;
+        x -= config.model.height;
         break;
       case 'ArrowRight':
-        x += 5;
+        x += config.model.height;
         break;
       case 'KeyW':
-        y -= 5;
+        y -= config.model.height;
         break;
       case 'KeyS':
-        y += 5;
+        y += config.model.height;
         break;
       case 'KeyA':
-        x -= 5;
+        x -= config.model.height;
         break;
       case 'KeyD':
-        x += 5;
+        x += config.model.height;
         break;
     }
     if (
